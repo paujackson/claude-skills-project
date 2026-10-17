@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -c \"import sys,json,subprocess; d=json.load(sys.stdin); f=d.get('tool_input',{}).get('file_path',''); f and f.endswith('.py') and subprocess.run(['black',f])\""
+          }
+        ]
+      }
+    ]
+  }
+}
